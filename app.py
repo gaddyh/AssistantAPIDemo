@@ -98,18 +98,10 @@ if st.session_state.start_chat:
     # Check if a file has been uploaded
     if uploadedFile is not None:
         st.write("Filename: ", uploadedFile.name)
-        stringio = StringIO(uploadedFile.getvalue().decode("utf-8"))
-        string_data = stringio.read()
-        st.write(string_data)
+      
 
         try:
-         # Upload a file with an "assistants" purpose
-            json_string = uploadedFile.read().decode("utf-8")
-
-            # Write the JSON string to a temporary file
-            with open("tempfile.json", "w", encoding="utf-8") as f:
-                f.write(json_string)
-
+           
             # It's assumed that 'client' is already set up for OpenAI API interaction
             # Now use the OpenAI Client to upload the file
             file = client.files.create(
