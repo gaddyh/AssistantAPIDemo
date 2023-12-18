@@ -97,7 +97,7 @@ if st.session_state.start_chat:
     uploadedFile = st.file_uploader("הוסף קובץ לסשן")
     # Check if a file has been uploaded
     if uploadedFile is not None:
-        st.write("Filename: ", uploadedFile.name)
+        #st.write("Filename: ", uploadedFile.name)
         try:
             file = client.files.create(
                 file=uploadedFile,
