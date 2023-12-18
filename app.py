@@ -152,7 +152,8 @@ if st.session_state.start_chat:
             thread_id=st.session_state.thread_id,
             run_id=run.id
             )
-            run_steps['data']['step_detail']['tool_calls']
+            #run_steps['data']['step_detail']['tool_calls']
+            st.write(run_steps)
             time.sleep(1)
             run = client.beta.threads.runs.retrieve(
                 thread_id=st.session_state.thread_id,
