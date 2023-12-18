@@ -97,7 +97,7 @@ if st.session_state.start_chat:
     # Check if a file has been uploaded
     if uploadedFile is not None:
         stringio = StringIO(uploadedFile.getvalue().decode("utf-8"))
-        st.write(stringio)
+        #st.write(stringio)
 
         # To read file as string:
         string_data = stringio.read()
