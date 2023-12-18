@@ -68,10 +68,9 @@ st.header("🏝️ Gadya Assist")
 
 #Get the OPENAI API Key
 openai_api_key_env = os.getenv('OPENAI_API_KEY')
-openai_api_key = st.sidebar.text_input(
-    'OpenAI API Key', placeholder='sk-', value=openai_api_key_env)
-url = "https://platform.openai.com/account/api-keys"
-st.sidebar.markdown("Get an Open AI Access Key [here](%s). " % url)
+openai_api_key = openai_api_key_env
+url = "https://platform.openai.com/usage"
+st.sidebar.markdown("See your usage [here](%s). " % url)
 if openai_api_key:
     openai.api_key = openai_api_key
 
