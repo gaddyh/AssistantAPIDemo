@@ -101,13 +101,13 @@ if st.session_state.start_chat:
         st.write(string_data)
 
          # Upload a file with an "assistants" purpose
-        with open("tempfile", "wb") as f:
+        with open("tempfile.txt", "wb") as f:
             f.write(uploadedFile.getbuffer())
         file = client.files.create(
-            file=open("tempfile", "rb"),
+            file=open("tempfile.txt", "rb"),
             purpose='assists'
         )
-        os.remove("tempfile")
+        os.remove("tempfile.txt")
 
    # st.write(getStockPrice('AAPL'))
     if "messages" not in st.session_state:
