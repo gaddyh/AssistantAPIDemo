@@ -103,12 +103,20 @@ if st.session_state.start_chat:
 
         try:
          # Upload a file with an "assistants" purpose
-            with open("tempfile.json", "wb") as f:
-                f.write(uploadedFile.getbuffer())
+            json_string = uploadedFile.read().decode("utf-8")
+
+            # Write the JSON string to a temporary file
+            with open("tempfile.json", "w", encoding="utf-8") as f:
+                f.write(json_string)
+
+            # It's assumed that 'client' is already set up for OpenAI API interaction
+            # Now use the OpenAI Client to upload the file
             file = client.files.create(
-                file=uploadedFile,
-                purpose='assistants'
+                file=open("tempfile.json", "rb"),
+                purpose='answers'
             )
+            
+            # Optionally, clean up the temporary file
             os.remove("tempfile.json")
         except Exception as e:
             st.error("An error has occurred while processing the file")
