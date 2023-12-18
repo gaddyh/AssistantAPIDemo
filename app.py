@@ -106,7 +106,7 @@ if st.session_state.start_chat:
             with open("tempfile.json", "wb") as f:
                 f.write(uploadedFile.getbuffer())
             file = client.files.create(
-                file=open("tempfile.json", "rb"),
+                file=uploadedFile,
                 purpose='assistants'
             )
             os.remove("tempfile.json")
