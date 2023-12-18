@@ -97,17 +97,18 @@ if st.session_state.start_chat:
     # Check if a file has been uploaded
     if uploadedFile is not None:
         stringio = StringIO(uploadedFile.getvalue().decode("utf-8"))
-        #st.write(stringio)
-
-        # To read file as string:
         string_data = stringio.read()
         st.write(string_data)
 
          # Upload a file with an "assistants" purpose
+        with open("tempfile", "wb") as f:
+            f.write(uploadedFile.getbuffer())
         file = client.files.create(
-            file=uploadedFile.getvalue(),
-            purpose='assistants'
+            file=open("tempfile", "rb"),
+            purpose='assists'
         )
+        os.remove("tempfile")
+
    # st.write(getStockPrice('AAPL'))
     if "messages" not in st.session_state:
         st.session_state.messages = []
