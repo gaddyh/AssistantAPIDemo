@@ -85,6 +85,12 @@ if st.sidebar.button("Start Chat"):
     uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=None, accept_multiple_files=False, key=None, on_change=None, label_visibility="visible")
     # Check if a file has been uploaded
     if uploadedFile is not None:
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        st.write(stringio)
+
+        # To read file as string:
+        string_data = stringio.read()
+        st.write(string_data)
         # Upload a file with an "assistants" purpose
         file = client.files.create(
             file=uploadedFile,
