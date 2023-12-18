@@ -91,11 +91,7 @@ if st.sidebar.button("Start Chat"):
         # To read file as string:
         string_data = stringio.read()
         st.write(string_data)
-        # Upload a file with an "assistants" purpose
-        file = client.files.create(
-            file=uploadedFile,
-            purpose='assistants'
-    )
+       
 
 # Define the function to process messages with citations
 def process_message_with_citations(message):
