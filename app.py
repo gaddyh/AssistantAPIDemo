@@ -112,7 +112,7 @@ if st.session_state.start_chat:
             # It's assumed that 'client' is already set up for OpenAI API interaction
             # Now use the OpenAI Client to upload the file
             file = client.files.create(
-                file=open("tempfile.json"),
+                file=open("tempfile.json", "rb", encoding="utf-8"),
                 purpose='assistants'
             )
             
