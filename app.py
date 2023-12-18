@@ -2,6 +2,7 @@
 from io import StringIO
 import openai
 import streamlit as st
+import traceback
 import time
 import os
 import json
@@ -100,14 +101,18 @@ if st.session_state.start_chat:
         string_data = stringio.read()
         st.write(string_data)
 
+        try:
          # Upload a file with an "assistants" purpose
-        with open("tempfile.txt", "wb") as f:
-            f.write(uploadedFile.getbuffer())
-        file = client.files.create(
-            file=open("tempfile.txt", "rb"),
-            purpose='assists'
-        )
-        os.remove("tempfile.txt")
+            with open("tempfile.txt", "wb") as f:
+                f.write(uploadedFile.getbuffer())
+            file = client.files.create(
+                file=open("tempfile.txt", "rb"),
+                purpose='assists'
+            )
+            os.remove("tempfile.txt")
+        except Exception as e:
+            st.error("An error has occurred while processing the file")
+            st.error(traceback.format_exc())
 
    # st.write(getStockPrice('AAPL'))
     if "messages" not in st.session_state:
