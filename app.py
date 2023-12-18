@@ -94,7 +94,7 @@ def process_message_with_citations(message):
 # Only show the chat interface if the chat has been started
 if st.session_state.start_chat:
      # Create a file uploader widget
-    uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=json, label_visibility="collapsed")
+    uploadedFile = st.file_uploader("הוסף קובץ לסשן", type="json", label_visibility="collapsed")
     # Check if a file has been uploaded
     if uploadedFile is not None:
         stringio = StringIO(uploadedFile.getvalue().decode("utf-8"))
