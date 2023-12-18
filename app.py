@@ -103,6 +103,11 @@ if st.session_state.start_chat:
                 file=uploadedFile,
                 purpose='assistants'
             )
+
+            assistant = client.beta.assistants.update (
+                assistant_id,
+                file_ids=[file.id]
+            )
             
         except Exception as e:
             st.error("An error has occurred while processing the file")
