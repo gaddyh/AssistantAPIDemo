@@ -94,7 +94,7 @@ def process_message_with_citations(message):
 # Only show the chat interface if the chat has been started
 if st.session_state.start_chat:
      # Create a file uploader widget
-    uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=None, accept_multiple_files=False, key=None, on_change=None, label_visibility="visible")
+    uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=json, label_visibility="collapsed")
     # Check if a file has been uploaded
     if uploadedFile is not None:
         stringio = StringIO(uploadedFile.getvalue().decode("utf-8"))
@@ -112,7 +112,7 @@ if st.session_state.start_chat:
             # It's assumed that 'client' is already set up for OpenAI API interaction
             # Now use the OpenAI Client to upload the file
             file = client.files.create(
-                file=open("tempfile.json", "rb", encoding="utf-8"),
+                file=open("tempfile.json", "rb"),
                 purpose='assistants'
             )
             
