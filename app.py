@@ -81,7 +81,13 @@ if st.sidebar.button("Start Chat"):
     thread = client.beta.threads.create()
     st.session_state.thread_id = thread.id
     st.write("thread id: ", thread.id)
-    st.file_uploader("הוסף קובץ לסשן", type=None, accept_multiple_files=False, key=None, on_change=None, label_visibility="visible")
+    uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=None, accept_multiple_files=False, key=None, on_change=None, label_visibility="visible")
+    # Upload a file with an "assistants" purpose
+    file = client.files.create(
+        file=open(uploadedFile, "rb"),
+        purpose='assistants'
+    )
+
 # Define the function to process messages with citations
 def process_message_with_citations(message):
     message_content = message.content[0].text.value
