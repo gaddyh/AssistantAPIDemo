@@ -102,6 +102,12 @@ if st.session_state.start_chat:
         # To read file as string:
         string_data = stringio.read()
         st.write(string_data)
+
+         # Upload a file with an "assistants" purpose
+        file = client.files.create(
+            file=uploadedFile,
+            purpose='assistants'
+        )
    # st.write(getStockPrice('AAPL'))
     if "messages" not in st.session_state:
         st.session_state.messages = []
