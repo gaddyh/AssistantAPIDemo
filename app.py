@@ -1,4 +1,5 @@
 # Import necessary libraries
+from io import StringIO
 import openai
 import streamlit as st
 import time
@@ -95,7 +96,7 @@ if st.session_state.start_chat:
     uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=None, accept_multiple_files=False, key=None, on_change=None, label_visibility="visible")
     # Check if a file has been uploaded
     if uploadedFile is not None:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        stringio = StringIO(uploadedFile.getvalue().decode("utf-8"))
         st.write(stringio)
 
         # To read file as string:
