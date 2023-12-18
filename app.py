@@ -148,6 +148,11 @@ if st.session_state.start_chat:
             st.sidebar.write(run.status)
             if run.status == "requires_action":
                 handle_function(run)
+            run_steps = client.beta.threads.runs.steps.list(
+            thread_id=st.session_state.thread_id,
+            run_id=run.id
+            )
+            run_steps.data.step_detail.tool_calls
             time.sleep(1)
             run = client.beta.threads.runs.retrieve(
                 thread_id=st.session_state.thread_id,
