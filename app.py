@@ -113,7 +113,7 @@ if st.session_state.start_chat:
             # Now use the OpenAI Client to upload the file
             file = client.files.create(
                 file=open("tempfile.json", "rb"),
-                purpose='answers'
+                purpose='assistants'
             )
             
             # Optionally, clean up the temporary file
