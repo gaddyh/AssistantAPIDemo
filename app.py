@@ -103,13 +103,13 @@ if st.session_state.start_chat:
 
         try:
          # Upload a file with an "assistants" purpose
-            with open("tempfile.txt", "wb") as f:
+            with open("tempfile.json", "wb") as f:
                 f.write(uploadedFile.getbuffer())
             file = client.files.create(
-                file=open("tempfile.txt", "rb"),
+                file=open("tempfile.json", "rb"),
                 purpose='assistants'
             )
-            os.remove("tempfile.txt")
+            os.remove("tempfile.json")
         except Exception as e:
             st.error("An error has occurred while processing the file")
             st.error(traceback.format_exc())
