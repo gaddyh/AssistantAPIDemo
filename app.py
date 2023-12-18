@@ -81,16 +81,7 @@ if st.sidebar.button("Start Chat"):
     thread = client.beta.threads.create()
     st.session_state.thread_id = thread.id
     st.write("thread id: ", thread.id)
-    # Create a file uploader widget
-    uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=None, accept_multiple_files=False, key=None, on_change=None, label_visibility="visible")
-    # Check if a file has been uploaded
-    if uploadedFile is not None:
-        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-        st.write(stringio)
-
-        # To read file as string:
-        string_data = stringio.read()
-        st.write(string_data)
+   
        
 
 # Define the function to process messages with citations
@@ -100,6 +91,16 @@ def process_message_with_citations(message):
 
 # Only show the chat interface if the chat has been started
 if st.session_state.start_chat:
+     # Create a file uploader widget
+    uploadedFile = st.file_uploader("הוסף קובץ לסשן", type=None, accept_multiple_files=False, key=None, on_change=None, label_visibility="visible")
+    # Check if a file has been uploaded
+    if uploadedFile is not None:
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        st.write(stringio)
+
+        # To read file as string:
+        string_data = stringio.read()
+        st.write(string_data)
    # st.write(getStockPrice('AAPL'))
     if "messages" not in st.session_state:
         st.session_state.messages = []
