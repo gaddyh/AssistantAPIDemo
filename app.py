@@ -63,7 +63,7 @@ if "thread_id" not in st.session_state:
     st.session_state.thread_id = None
 
 # Set up the Streamlit page with a title and icon
-st.set_page_config(page_title="Smart Investment Advisor", page_icon=":moneybag:", layout="wide")
+st.set_page_config(page_title="Gadya Assist", page_icon="🏝️", layout="wide")
 st.header(":moneybag: Smart Investment Advisor")
 
 #Get the OPENAI API Key
