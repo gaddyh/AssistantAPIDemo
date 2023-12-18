@@ -98,19 +98,12 @@ if st.session_state.start_chat:
     # Check if a file has been uploaded
     if uploadedFile is not None:
         st.write("Filename: ", uploadedFile.name)
-      
-
         try:
-           
-            # It's assumed that 'client' is already set up for OpenAI API interaction
-            # Now use the OpenAI Client to upload the file
             file = client.files.create(
                 file=uploadedFile,
                 purpose='assistants'
             )
             
-            # Optionally, clean up the temporary file
-            os.remove("tempfile.json")
         except Exception as e:
             st.error("An error has occurred while processing the file")
             st.error(traceback.format_exc())
