@@ -107,7 +107,7 @@ if st.session_state.start_chat:
                 f.write(uploadedFile.getbuffer())
             file = client.files.create(
                 file=open("tempfile.txt", "rb"),
-                purpose='assists'
+                purpose='assistants'
             )
             os.remove("tempfile.txt")
         except Exception as e:
