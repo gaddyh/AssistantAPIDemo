@@ -105,7 +105,7 @@ if st.session_state.start_chat:
 
          # Upload a file with an "assistants" purpose
         file = client.files.create(
-            file=uploadedFile,
+            file=uploadedFile.getvalue(),
             purpose='assistants'
         )
    # st.write(getStockPrice('AAPL'))
