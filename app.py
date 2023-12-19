@@ -76,6 +76,16 @@ def run_openai_thread(prompt):
     messages = client.beta.threads.messages.list(thread_id=thread.id)
     return messages
 
+# Initialize session state variables for file IDs and chat control
+if "file_id_list" not in st.session_state:
+    st.session_state.file_id_list = []
+
+if "start_chat" not in st.session_state:
+    st.session_state.start_chat = False
+
+if "thread_id" not in st.session_state:
+    st.session_state.thread_id = None
+
 # Set up the Streamlit page
 st.set_page_config(page_title='OpenAI App', page_icon='🤖')
 st.title('OpenAI Interactive Assistant')
