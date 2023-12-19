@@ -83,7 +83,7 @@ st.title('OpenAI Interactive Assistant')
 # Main UI
 st.sidebar.title("Settings")
 # Check if the user's API key is set
-api_key = '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'  #st.sidebar.text_input("Enter your OpenAI API Key", type="password")
+api_key = st.sidebar.text_input("Enter your OpenAI API Key", type="password")
 if api_key:
     openai.api_key = api_key
     st.session_state.start_chat = True
